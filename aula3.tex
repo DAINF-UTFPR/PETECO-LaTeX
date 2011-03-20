@@ -1,0 +1,205 @@
+\part{Aula 3}
+\section{Aula 3}
+
+\subsection{Divisão de aquivos}
+\begin{frame}{Divisão de arquivos}
+
+      \begin{itemize}
+    \item Em projetos com grande quantidade de texto pode ser interessante separar o documento em diferentes arquivos para melhor organização através do comando:    
+    \end{itemize}
+
+    \alert{\textbackslash include\{\textit{nomedoarquivo.tex}\}}
+
+    \begin{itemize}
+     \item Dentro do documento \LaTeX, no ambiente \textit{\textbackslash begin\{document\}} no momento em que aparece o comando o processamento vai imediatamente buscar o texto contido no arquivo.
+    \end{itemize}
+
+    \begin{itemize}
+     \item Caso o arquivo esteja em uma pasta diferente da do arquivo principal, deve ser especificado o caminho completo do arquivo que será incluído.
+    \end{itemize}
+
+\end{frame}
+  
+\subsection{Utilização de Modelos}
+\begin{frame}[allowframebreaks]{Utilização de Modelos - abnTeX}
+
+  \begin{itemize}
+    \item \textit{Modelos} em \LaTeX são formatos pré-definidos de documentos que visam automatizar a formatação do texto de acordo com determinada norma.
+    \item O \textit{abnTeX} é um modelo \LaTeX que atende às normas da ABNT: NBR14724:2001, NBR6028:1990, NBR6027:1989 e NBR6024:1989.
+    \item Entre os itens formatados por esse modelo estão: folha de rosto, folha de aprovação, resumo e \textit{abstract}, capítulos com ou sem numeração, anexos e apêndices, espaçamento entrelinha, estilo e numeração das páginas, bibliografia.
+    \item O modelo pode ser obtido em http://abntex.codigolivre.org.br/;
+    \item A classe de um documento abnTeX é a \textit{abnt}, seu funcionamento é semelhante ao da classe \textit{standart};
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Utilização de Modelos - UTFPR}
+ 
+  \begin{itemize}
+   \item Na Universidade Tecnológica Federal do Paraná há alguns modelos prontos e disponíveis de \LaTeX:
+    
+    \begin{enumerate}
+      \item Modelo para teses e dissertações (CPGEI) 
+      \item Modelo para trabalhos de conclusão de cursos (DAELN) 
+      \item Modelo para trabalhos de disciplinas (Oficinas de Integração) 
+    \end{enumerate}
+
+    \item Todos podem ser obtidos no endereço: http://pessoal.utfpr.edu.br/hvieir/orient/
+      
+  \end{itemize}
+
+\end{frame}
+
+
+\subsection{Referências e Bibliografias}
+\begin{frame}{Referências e Bibliografias}
+
+  \begin{itemize}
+    \item Em \LaTeX\ há diversos métodos para se construir a Bibliografia de um texto, os dois principais são:
+ 
+    \begin{enumerate}
+        \item Sistema embarcado
+        \item BibTex
+    \end{enumerate}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Sistema Embarcado de Bibliografia}
+
+  \begin{itemize}
+    \item Em projetos pequenos, onde a bibliografia não será reutilizada, o método mais eficiente de fazer a bibliografia
+    é através do sistema incorporado ao próprio \LaTeX\ através do ambiente \textit{\textbackslash begin\{thebibliography\}}.    
+  \end{itemize}
+
+  \begin{block}{}
+  \begin{semiverbatim}
+    \\begin\{thebibliography\}
+    \\bibitem\{lamport94\}
+
+      Leslie Lamport,
+      \\emph\{\\LaTeX: A Document Preparation System\}.
+      Addison Wesley, Massachusetts,
+      2nd Edition,
+      1994.
+
+    \\end\{thebibliography\}
+  \end{semiverbatim}
+  \end{block}
+
+  \begin{itemize}
+    \item O comando \textit{thebibliography} deve estar localizado logo acima do \textit{\textbackslash end\{document\}}.
+    \item O comando \textit{bibitem} define um item da bibliografia nomeado com o identificador entre os colchetes.
+    \item Todo o texto após o \textit{bibitem} será transcrito no arquivo final sem qualquer modificação.
+  \end{itemize}
+
+  \begin{itemize}
+   \item Para citar um item contido na bibliografia o comando \textit{\\cite\{cite\_key\}}, onde \textit{cite\_key} é o 
+   identificador definido no \textit{bibitem}, deve ser inserido no trecho do texto onde a citação aparecerá.
+   \item Para especificar uma página, figura ou teorema da referência, o comando deve ser \textit{cite[especificao]\{cite\_key\}}.
+   \item Para múltiplas citações, deve-se user vírgula entre os itens, \textit{cite\{cite\_key1,cite\_key2,cite\_key3\}}.    
+  \end{itemize}
+ 
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{BibTex}
+
+  \begin{itemize}
+    \item O BibTex funciona como uma pequena base de dados, onde são armazenadas as referências de acordo com uma sintaxe própria e no momento da criação do arquivo final o formato é definido de acordo com o padrão desejado. 
+    \item Ao contrário do sistema embarcado, o BibTex utiliza um arquivo diferente do \textit{.tex} original onde está o código \LaTeX.
+    \item Uma entrada padrão do BibTex é a seguinte:
+  \end{itemize}
+
+  \begin{block}{}
+    \begin{semiverbatim}
+     @book\{ibrahim,
+      address={Rio de Janeiro},
+      author={Ibrahim Cesar},
+      title={EQM},
+      publisher={Osvira Lata},
+      year={2008}
+    \}
+    \end{semiverbatim}
+  \end{block}
+
+  \begin{itemize}
+   \item Toda entrada BibTex começa com um tipo (lista a seguir). Os tipos são utilizados na padronização da referência no arquivo final. Cada tipo possui determinados campos obrigatórios e opcionais (lista a seguir). 
+    \item Para cada tipo de entrada determinados campos são utilizados;
+    \item A primeira palavra em um item BibTex depois do tipo é a identificação daquela entrada e deve ser usada toda vez que a referência for usada;
+    \item No arquivo contendo o código \LaTeX\ os itens do BibTex devem ser citados utilizando os comandos \textit{\\cite\{citekey\}} ou \textit{\\citeonline\{citekey\}}, onde \textit{citekey} é o identificador do item;
+    \item Para montar a bibliografia o comando é: \textit{\\bibliography\{file\}} onde \textit{file} é o nome do arquivo, sem a extensão.
+    \item Na prática, os passos para criação de uma bibliografia pelo BibTex são os seguintes:
+    \begin{enumerate}
+      \item Criar o arquivo .bib;
+      \item Gerar o arquivo .aux (rodando \textit{pdflatex} por exemplo);
+      \item Rodar o comando \textit{bibtex arquivo} cada vez que o arquivo .bib for modificado;
+      \item Rodar novamente o \textit{pdflatex} para criar o arquivo com as referências.
+    \end{enumerate}
+
+  \end{itemize}
+  
+
+  \begin{itemize}
+    \item Os tipos definidos são:
+    \begin{itemize}
+      \item \textbf{@article} Um artigo de jornal ou revista;
+      \item \textbf{@book} Um livro com uma editora específica;
+      \item \textbf{@booklet} Uma obra sem editora ou instituição patrocinadora;
+      \item \textbf{@conference} Conferência;
+      \item \textbf{@inbook} Parte de um livro, geralmente sem título;
+      \item \textbf{@incollection} Parte de um livro com título;
+      \item \textbf{@inproceedings} Artigo publicado em anais de conferência;
+      \item \textbf{@manual} Documentação técnica;
+      \item \textbf{@mastersthesis} Tese de mestrado;
+      \item \textbf{@misc} Uso genérico;
+      \item \textbf{@phdthesis} Tese de doutorado;
+      \item \textbf{@proceedings} Deliberações de uma conferência;
+      \item \textbf{@techreport} Um relatório públicado por uma escola ou instituição.
+      \item \textbf{@unpublished} Um documento com autor e título, mas não publicado oficialmente.
+    \end{itemize}
+  
+  \end{itemize}
+
+  \begin{itemize}
+   \item Os campos disponíveis no BibTex são:
+    \begin{itemize}
+      \item \textit{address}: endereço do editor, geralmente a cidade;
+      % \item \textit{annote}: anotação para estilos de bibliografia;
+      \item \textit{author}: autor, em caso de mais de um, separado por \textit{and};
+      \item \textit{booktitle}: Título do livro;
+      \item \textit{chapter}: Capítulo;
+      \item \textit{crossref}: Chave de entrada para referência cruzada;
+      \item \textit{edition}: Edição;
+      \item \textit{editor}: Editor;
+      \item \textit{eprint}: Especificação de uma publicação eletrônica;
+      \item \textit{howpublished}: Como foi publicado, caso não usual;
+      \item \textit{institution}: Instituição envolvida na edição;
+      \item \textit{journal}: Jornal ou Revista da publicação;
+      \item \textit{key}: Campo oculto, usado na classificação alfabética das referências quando \textit{author} e \textit{editor} estão ocultos;
+      \item \textit{month}: Mês de publicação;
+      \item \textit{note}: Informação extra;
+      \item \textit{number}: Número (edição) de um Jornal ou Revista;
+      \item \textit{organization}: Patrocinador de uma conferência;
+      \item \textit{pages}: Páginas;
+      \item \textit{publisher}: Editora;
+      \item \textit{school}: Instituição de Ensino onde a tese foi escrita; 
+      \item \textit{series}: Série de um livro;
+      \item \textit{title}: Título do trabalho;
+      \item \textit{type}: Tipo de relatório;
+      \item \textit{url}: Endereço WWW.
+      \item \textit{volume}: Volume para uma obra multi-volume;
+      \item \textit{year}: Ano de publicação.
+
+    \end{itemize}
+
+  \end{itemize}
+
+  
+  
+
+
+
+ 
+\end{frame}
+
+

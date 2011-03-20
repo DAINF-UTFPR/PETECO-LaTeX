@@ -1,0 +1,490 @@
+%%%%%%%%%%%%
+%% Aula 2 %%
+%%%%%%%%%%%%
+
+\part{Aula 2}
+\section{Aula 2}
+
+%% Arquivo de Entrada %%
+\subsection{Arquivo de entrada}
+
+\begin{frame}{Arquivo de entrada}
+	\begin{itemize}
+	\item A entrada para o \LaTeX\ é um arquivo de texto, ASCII ou UTF-8. Sendo possível criá-lo em qualquer editor de texto.
+	\end{itemize}
+	
+	\alert{\it nomedoarquivo.tex \\ nomedoarquivo.bib} (Aula 3)
+
+	\vspace{.5cm}
+	\pause
+
+	\begin{itemize}
+	\item Arquivos auxiliares:
+	\end{itemize}
+	
+	{\it nomedoarquivo.\{aux, log, nav, out, snm, toc, \dots\} }
+\end{frame}
+
+%% Estrutura básica %%
+\subsection{Estrutura Básica}
+
+% Comandos %
+\begin{frame}{Comandos}
+	\begin{itemize}
+	\item Os comandos no \LaTeX\ têm a seguinte forma:
+	\end{itemize}
+
+	\alert{\textbackslash nomedocomando\{\textit{parâmetros(opcional)}\} }
+	
+	\vspace{.5cm}
+
+	\begin{example}
+		\textbackslash LaTeX \\
+		\textbackslash section\{Introdução\}		
+	\end{example}
+\end{frame}
+
+% Caracteres Especiais %
+\begin{frame}{Caracteres especiais}
+	\begin{itemize}
+	\item Os seguintes símbolos são caracteres especiais no \LaTeX:
+	\end{itemize}
+
+	\alert{\# \$ \% \^{} \& \_ \{ \} \~{} \textbackslash}
+
+	\begin{itemize}
+	\item Para utilizá-los é necessário a inserção de ``\textbackslash'' antes:
+	\end{itemize}
+
+	\alert{
+	   \textbackslash\# 
+	   \textbackslash\$ 
+	   \textbackslash\% 
+	   \textbackslash\^{} 
+	   \textbackslash\& 
+	   \textbackslash\_ 
+	   \textbackslash\{ 
+	   \textbackslash\} 
+	   \textbackslash\~{} 
+	   \textbackslash textbackslash
+	}
+\end{frame}
+
+% Espaçamento e parágrafos %
+\begin{frame}[fragile]{Espaçamento e parágrafos}
+	\begin{itemize}
+	\item Apenas um espaço em branco é considerado pelo \LaTeX, para adicionar mais espaços é necessário inserir o comando \alert{``\textbackslash\ ''}.
+	\item O comando \alert{\textbackslash\textbackslash} faz uma quebra-de-linha.
+	\item Uma linha em branco representa um novo parágrafo.
+	\end{itemize}
+
+    
+    \begin{block}{Entrada}
+        \small
+        \begin{semiverbatim}
+\small{}Não faz diferença um ou mais        espaços depois de uma
+palavra. Com \\\\ o texto vai para a próxima linha.
+
+E uma linha em branco representa um novo parágrafo.
+\end{semiverbatim}
+    \end{block}    
+    
+    \begin{block}{Saída}
+        \small
+        Não faz diferença um ou mais       espaços depois de uma palavra. Com \\ o texto vai para a próxima linha.
+
+        E uma linha em branco representa um novo parágrafo.
+    \end{block}
+\end{frame}
+
+%% Estrutura do arquivo %%
+\subsection{Estrutura do arquivo}
+
+% Classe %
+\begin{frame}[allowframebreaks]{Classe}
+	\begin{itemize}
+	\item Primeiro comando do arquivo deve ser o tipo do documento, ou classe, que é feito pelo seguinte comando:
+	\end{itemize}
+
+	\alert{\textbackslash documentclass[\textit{opções}]\{\textit{classe}\}}
+
+	\vspace{.5cm}
+	
+	\begin{block}{Mais usados}
+		\begin{center}
+		\begin{tabular}{|l|l|}
+		\hline
+		{\bf Opções}				& {\bf Classes} \\
+		\hline
+		10pt, 11pt, 12pt			& article		\\
+		a4paper, letterpaper, ...	& report		\\
+		onecolumn, twocolumn		& book			\\
+		twoside, oneside			& beamer		\\
+		\vdots						& \vdots		\\
+		\hline
+		\end{tabular}
+		\end{center}
+	\end{block}
+\end{frame}
+
+% Pacotes %
+\begin{frame}{Pacotes}
+	\begin{itemize}
+	\item É possível adicionar pacotes para aumentar as funcionalidades do \LaTeX\, como cores, figuras, fontes, etc. Para isso	se usa o comando:
+	\end{itemize}
+
+	\alert{\textbackslash usepackage[\textit{opções}]\{\textit{pacote}\}}
+
+	\vspace{.5cm}
+
+	\begin{example}
+		\begin{itemize}
+		\item \textbackslash usepackage[\textit{brazil}]\{\textit{babel}\}
+		\item \textbackslash usepackage[\textit{utf8}]\{\textit{inputenc}\}
+		\item \textbackslash usepackage[\textit{T1}]\{\textit{fontenc}\}
+		\item \textbackslash usepackage\{\textit{graphicx}\}
+		\end{itemize}
+	\end{example}
+\end{frame}
+
+% Corpo do texto %
+\begin{frame}[fragile]{Corpo do texto}
+    \begin{itemize}
+    \item Após feitas as configurações, o corpo do texto é iniciado pelo comando
+    \end{itemize}
+
+    \alert{\textbackslash begin\{\it document\}}
+    
+    \begin{itemize}
+    \item E finalizado por
+    \end{itemize}
+
+    \alert{\textbackslash end\{\it document\}}
+
+    \begin{example}
+        \begin{semiverbatim}
+\\documentclass[11pt,a4paper]\{article\}
+\\usepackage[brazil]\{babel\}
+\\usepackage\{amsmath\}
+...
+\\begin\{document\}
+...
+\\end\{document\}
+\end{semiverbatim}
+    \end{example}
+\end{frame}
+
+%% Comandos Globais de Configuração %%
+\subsection{Comandos Globais de configuração}
+
+% Capítulos, seções, subseções %
+\begin{frame}{Capítulos, seções, subseções}
+    \begin{itemize}
+    \item O \LaTeX\ suporta até três níveis de seção e dois níveis de parágrafo na classe ``article'':
+    \end{itemize}
+    
+    \alert{\textbackslash section\{...\} \\
+           \textbackslash subsection\{...\} \\
+           \textbackslash subsubsection\{...\} \\
+           \textbackslash paragraph\{...\} \\
+           \textbackslash subparagraph\{...\} \\
+        }
+    
+    \begin{itemize}
+    \item Em adicional, nas classes ``report'' e ``book'' há um seção superior
+    \end{itemize}
+
+    \alert{\textbackslash chapter\{...\}}
+\end{frame}
+
+% Título e Sumário %
+\begin{frame}{Título e sumário}
+    \begin{itemize}
+    \item Para gerar o título de todo o documento usa-se
+    \end{itemize}
+
+   \alert{\textbackslash maketitle}
+
+    \begin{itemize}
+    \item E seu conteúdo é definido pelo seguintes comandos
+    \end{itemize}
+
+    \alert{\textbackslash title\{...\}} \\
+    \alert{\textbackslash author\{...\}} \\
+    \alert{\textbackslash date\{...\}} {\small (opcional)}
+
+    \begin{itemize}
+    \item Para construir o sumário, lista de figuras ou tabelas é necessário apenas um comando
+    \end{itemize}
+    
+    \alert{\textbackslash tableofcontents \\
+           \textbackslash listoffigures \\
+           \textbackslash listoftables
+        }
+
+\end{frame}
+
+% Ambientes %
+\begin{frame}{Ambientes}
+    \begin{itemize}
+    \item Para compor textos com algúm propósito especial o \LaTeX\ define muitos tipos de ambientes
+    \end{itemize}
+
+    \alert{\textbackslash begin\{\it ambiente\} \\
+           \textit{texto} \\
+           \textbackslash end\{\it ambiente\}}
+
+    \begin{itemize}
+    \item É possível colocar vários ambientes um dentro do outro
+    \end{itemize}
+
+    \alert{\small
+    \textbackslash begin\{aaa\} \\
+    \ \ \textbackslash begin\{bbb\} \\
+    \ \ \ \ \textbackslash begin\{ccc\} \\
+    \ \ \ \ \vdots \\
+    \ \ \ \ \textbackslash end\{ccc\} \\
+    \ \ \textbackslash end\{bbb\} \\
+    \textbackslash end\{aaa\}
+    }
+\end{frame}
+
+% Listagens %
+\begin{frame}[fragile]{Listagens}
+    \begin{itemize}
+    \item Existem três ambientes básicos para listagens:
+        \begin{description}
+        \item[itemize:] listas simples
+        \item[enumerate:] listas enumeradas
+        \item[description:] descrições
+        \end{description}
+    \end{itemize}
+    
+    \begin{columns}
+        \column{.5\textwidth}
+        \begin{block}{Entrada}
+            \begin{semiverbatim}
+\footnotesize{}\\begin\{enumerate\}
+\\item Primeiro
+  \\begin\{itemize\}
+  \\item Com ponto
+  \\item[-] Com traço
+  \\end\{itemize\}
+\\item Segundo
+  \\begin\{description\}
+  \\item[Item] descrição
+  \\end\{description\}
+\\end\{enumerate\}
+\end{semiverbatim}
+        \end{block}
+    
+        \column{.5\textwidth}
+        \begin{block}{Saída}
+            \begin{enumerate}
+            \item[1] Primeiro
+            \begin{itemize}
+            \item Com ponto
+            \item[-] Com traço
+            \end{itemize}
+            \item[2] Segundo
+            \begin{description}
+            \item[Item] descrição
+            \end{description}            
+            \end{enumerate}
+        \end{block}
+    \end{columns}
+\end{frame}
+
+% Alinhamento %
+\begin{frame}[fragile]{Alinhamento}
+    \begin{itemize}
+    \item Existem três ambientes básicos para alinhamento:
+        \begin{description}
+        \item[flushleft:] alinha o texto a esquerda (default)
+        \item[flushright:] alinha o texto a direita
+        \item[center:] centraliza o texto
+        \end{description}
+    \end{itemize}
+    
+    \begin{columns}
+        \column{.5\textwidth}
+        \begin{block}{Entrada}
+            \begin{semiverbatim}
+\footnotesize{}\\begin\{flushleft\}
+Texto alinhado à esquerda.
+\\end\{flushleft\}
+
+\\begin\{flushright\}
+Texto alinhado à direita.
+\\end\{flushright\}
+
+\\begin\{center\}
+Texto centralizado.
+\\end\{center\}
+\end{semiverbatim}
+        \end{block}
+    
+        \column{.5\textwidth}
+        \begin{block}{Saída}
+            \begin{flushleft}
+            Texto alinhado à esquerda
+            \end{flushleft}
+
+            \begin{flushright}
+            Texto alinhado à direita
+            \end{flushright}
+
+            \begin{center}
+            Texto centralizado
+            \end{center}
+        \end{block}
+    \end{columns}
+\end{frame}
+
+%% Tipos de arquivo %%
+%\subsection{Tipos de arquivo}
+
+%\begin{frame}{Tipos de arquivo}
+%\end{frame}
+
+%% Primeiro documento %%
+%\subsection{Primeiro documento}
+
+%\begin{frame}{Primeiro documento}
+%\end{frame}
+
+%% Inserção de Figuras e Tabelas %%
+\subsection{Inserção de Figuras e Tabelas}
+
+% Figuras %
+\begin{frame}[fragile]{Figuras}
+    \begin{itemize}
+    \item Para inserir figuras é necessário utilizar o pacote \textit{graphicx}, ele permite a inserção de gráficos nos mais variados formatos (JPG, BMP, GIF, PS, ...) através do comando:
+    \end{itemize}
+    
+    \alert{\textbackslash includegraphics[\textit{opções}]\{\textit{caminho}\}}
+
+    \begin{itemize}
+    \item É necessário inserí-lo dentro do ambiente \textit{figure}.
+    \end{itemize}
+
+    \begin{example}
+        \begin{semiverbatim}
+\small\\begin\{figure\}[h]
+\\includegraphics[width=5cm]\{imagem.jpg\}
+\\caption\{Minha figura\}
+\\label\{fig:01\}
+\\end\{figure\}
+\end{semiverbatim}
+    \end{example}
+\end{frame}
+
+
+% Tabelas %
+\begin{frame}[allowframebreaks]{Sintaxe}
+    \begin{itemize}
+    \item As tabelas são criadas dentro do ambiente \textit{tabular}
+    \end{itemize}
+
+    \alert{\textbackslash begin\{\textit{tabular}\}[\textit{posição}]\{\textit{tabulação}\} \\
+           \textbackslash end\{\textit{tabular}\}
+          }
+
+    \begin{block}{Comandos úteis}
+        \begin{description}
+        \item[\&] separador de colunas
+        \item[\textbackslash\textbackslash] começa nova linha
+        \item[\textbackslash hline] linha horizontal
+        \item[\textbackslash newline] começa uma nova linha na célula
+        \item[\textbackslash cline(\textit{i-j})] linha horizontal da coluna \textit{i} até a \textit{j}
+        \item[\textbackslash multicolumn\{\textit{tamanho}\}\{\textit{tabulaçao}\}{...}] define uma célula com múltiplas colunas
+        \end{description}
+    \end{block}
+
+    \newpage
+    
+    \begin{description}
+    \item[posição:] vertical em referência ao texto em volta, pode ser
+        \begin{description}
+        \item[b] em baixo
+        \item[c] centralizado (default)
+        \item[t] em cima
+        \end{description}
+    \item[tabulação:] determina o alinhamento de cada coluna e as linhas verticais
+        \begin{description}
+        \item[l] alinhamento esquerdo
+        \item[c] centralizado
+        \item[r] alinhamento direito
+        \item[p\{\textit{largura}\}] coluna com largura definida e com saltos de linha
+        \item[|] linha vertical
+        \item[||] linha vertical dupla
+        \end{description}
+    \end{description}
+\end{frame}
+
+\begin{frame}[fragile]{Exemplo}
+    
+    \begin{columns}
+    \column{7cm}
+    \begin{block}{Entrada}
+        \begin{semiverbatim}
+\footnotesize\\begin\{tabular\}\{ l | c | r \}
+esquerda \& centro \& direita \\\\
+\\hline
+1 \& 2 \& 3 \\\\
+\\cline{2-2}
+4 \& 5 \& 6 \\\\
+\\cline{2-2}
+7 \& 8 \& 9 
+\\hline
+\\end\{tabular\}
+\end{semiverbatim}
+    \end{block}
+
+    \begin{block}{Saída}
+        \begin{tabular}{l|c|r}
+        esquerda & centro & direita \\
+        \hline
+        1 & 2 & 3 \\
+        \cline{2-2}
+        4 & 5 & 6 \\
+        \cline{2-2}
+        7 & 8 & 9 \\
+        \hline
+        \end{tabular}
+    \end{block}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[allowframebreaks,fragile]{Ambientes flutuantes}
+    O \LaTeX\ possui ambientes ``flutuantes'', isto é, ambientes que são dispostos automaticamente no texto de acordo com seu conteúdo.
+    
+    Os ambientes Figure e Table fornecem comandos para dinamização dos conteúdos com o documento, como:
+    
+    \begin{itemize}
+    \item título/legenda;
+    \item numeração;
+    \item referência;
+    \item lista de figuras;
+    \end{itemize}
+    
+    \begin{example}
+        \begin{semiverbatim}
+\\begin\{figure\}[\textit{pos}]
+  \\includegraphics\{...\}
+  \\caption\{Legenda da figura\}
+  \\label\{fig:exemplo\}
+\\end\{figure\}
+
+\\begin\{table\}[\textit{pos}]
+  \\caption\{Titulo da tabela\}
+  \\begin\{tabular\}\{...\}
+  ...
+  \\end\{tabular\}
+  \\label\{tab:exemplo\}
+\\end\{table\}
+\end{semiverbatim}
+    \end{example}
+\end{frame}
+
+

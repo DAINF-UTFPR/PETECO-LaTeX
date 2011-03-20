@@ -1,0 +1,231 @@
+%%%%%%%%%%%%
+%% Aula 4 %%
+%%%%%%%%%%%%
+
+\part{Aula 4}
+\section{Aula 4}
+
+\subsection{Apresentações (BEAMER)}
+
+\begin{frame}[fragile]{Introdução}
+    \begin{itemize}
+    \item {\footnotesize BEAMER} é uma classe do \LaTeX\ para criação de apresentações de slides ou transparências.
+    \item Uma apresentação em {\footnotesize BEAMER} é criada como qualquer outro documento \LaTeX, diferentes slides são colocados em ambientes (chamados \textit{frames}).
+    \item Muitos pacotes de \LaTeX\ já contêm a classe {\footnotesize BEAMER}, no entanto, sua versão atualizada pode ser encontrada em: \url{http://bitbucket.org/rivanvx/beamer}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Vantagens}
+    \begin{itemize}
+    \item Pode ser usado com \verb|pdflatex|, \verb|latex+dvips|, \verb|luatex| e \verb|xelatex|.
+    \item Efeitos e sobreposições podem ser criados facilmente.
+    \item Sua estrutura torna fácil criar apresentações de outras classes como \verb|article| e \verb|book|.
+    \item A saída final é um arquivo PDF, assim não é preciso se preocupar se determinado programa está instalado em diferentes locais.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura básica}
+    Uma apresentação em {\footnotesize BEAMER} tem a mesma estrutura de um documento \LaTeX.
+    
+{\footnotesize
+\begin{verbatim}
+    \documentclass{beamer}
+
+    \usetheme{Darmstadt}
+
+    \title{Titulo da apresentação}
+    \author{Nome do autor}
+    \institut{Instituição}
+    \date{Data da apresentação}
+
+    \begin{document}
+        \frame{\pagetitle}
+
+        \begin{frame}
+            Minha apresentação
+        \end{frame}
+    \end{document}
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile]{Frames}
+    \begin{itemize}
+    \item Frame é o ambiente onde se cria um ou uma sequência de slides.
+    \item[] \alert{\textbackslash begin\{\textit{frame}\}[\textit{opções}]\{\textit{Título}\}}
+    \item Eles também podem ser criados com o comando \alert{\textbackslash frame\{\}}.
+    \item Se o conteúdo exceder um slide, a opção \alert{allowframebreaks} pode ser utilizada para dividir o frame em várias partes.
+    \item Se a divisão não ficar como desejado, também pode-se usar o comando \alert{\textbackslash newpage} para começar um novo slide a partir deste ponto.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Página de título}
+    \begin{itemize}
+    \item Uma página de título é composta por 4 atributos: \alert{\textbackslash title}, \alert{\textbackslash author}, \alert{\textbackslash institute} e \alert{\textbackslash date}.
+    \item Para inserí-la usa se o comando \alert{\textbackslash titlepage}.
+    \end{itemize}
+
+    \begin{example}
+    \begin{semiverbatim}
+\\title\{Título da apresentação\}
+\\author\{Nome do(s) autor(es)\}
+\\institute\{Universidade/Empresa/...\}
+\\date\{Opcional - o padrão é a data atual\}
+
+\\frame\{
+    \\titlepage
+    \}
+    \end{semiverbatim}
+    \end{example}
+\end{frame}
+
+\begin{frame}[fragile]{Sumário}
+    \begin{itemize}
+    \item O comando para se criar um sumário é o mesmo que nos outros documentos, porém ele deve estar dentro de um frame
+    \end{itemize}
+
+    \begin{example}
+    \begin{semiverbatim}
+\\frame\{
+    \alert{\\tableofcontents}
+    \}
+    \end{semiverbatim}
+    \end{example}
+\end{frame}
+
+\begin{frame}[fragile]{Sobreposições e efeitos (\textit{Overlay})}
+    \begin{itemize}
+    \item Para se fazer efeitos com o texto, como aparecer após 1 clique, mudar de cor e sumir, pode-se utilizar
+    \end{itemize}
+
+    \begin{columns}
+        
+        \column{.3\textwidth}
+        \begin{itemize}
+        \item[]<1-| alert@1> \verb|\pause|
+        \item[]<2-| alert@2> \verb|\only|
+        \item[]<3-| alert@3> \verb|\visible|
+        \item[]<4-| alert@4> \verb|\invisible|
+        \item[]<5-| alert@5> \verb|\alt|
+        \end{itemize}
+        
+        \column{.7\textwidth}
+           
+        \only<1>{
+            \begin{semiverbatim}
+\\begin\{itemize\}
+
+\ \ \\item A
+
+\ \ \\pause
+    
+\ \ \\item B
+
+\\end\{itemize\}
+            \end{semiverbatim}
+        }
+
+        \only<2>{
+            \begin{semiverbatim}
+Contador: \\only<1>\{1\} \\only<2>\{2\} \\only<3>\{3\} \\only<4>\{4\} \\only<5>\{5\}
+            \end{semiverbatim}
+        }
+
+        \only<3>{
+            \begin{semiverbatim}
+\\visible<3>\{Este texto será visível somente no slide 3.\}
+            \end{semiverbatim}
+        }
+
+        \only<4>{
+            \begin{semiverbatim}
+\\invisible<-2>\{Este texto fica invisível até o slide 2 e visível no restante.\} 
+            \end{semiverbatim}
+        }
+
+        \only<5>{
+            \begin{semiverbatim}
+\\alt<5>\{Texto para o slide 2.\}\{Texto para o restante.\}
+            \end{semiverbatim}
+        }
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Especificação de \textit{Overlay}}
+    \begin{itemize}
+    \item Tanto nos comandos descritos anteriormente quanto em outros comandos de personalização (ex. \verb|\textit|, \verb|\textbf|, \verb|\color|, \verb|\alert| e \verb|\item|) e nos ambientes é possível adicionar uma especificação de um \textit{overlay}.
+    \end{itemize}
+
+    \begin{description}
+    \item[\textbackslash comando<n>]  ocorre somente no slide \textbf{n};
+    \item[\textbackslash comando<-n>]  ocorre até no slide \textbf{n};
+    \item[\textbackslash comando<n->]  ocorre do slide \textbf{n} até o final do frame;\
+    \item[\textbackslash comando<n-m>]  ocorre do slide \textbf{n} até o slide \textbf{m} 
+    \end{description}
+\end{frame}
+
+\begin{frame}[allowframebreaks,fragile]{Ambiente Block}
+    \begin{itemize}
+    \item Block é um ambiente que forma uma caixa colorida ao redor do conteúdo, útil para destacar informações importantes.
+    \item Existem vários ambientes Block diferentes para, principalmente, apresentações científicas: \verb|block|, \verb|example|, \verb|proof|, \verb|theorem|, \verb|alertblock|, \verb|definition|.
+    \end{itemize}
+
+\newpage
+
+    \begin{block}{Título do bloco}
+\begin{semiverbatim}
+\\begin\{block\}\{Título do bloco\}
+  - conteúdo -
+\\end\{block\}
+\end{semiverbatim}
+    \end{block}
+   
+   \begin{alertblock}{título do bloco}
+\begin{semiverbatim}
+\\begin\{alertblock\}\{Título do bloco\}
+  - conteúdo -
+\\end\{alertblock\}
+\end{semiverbatim}
+    \end{alertblock}
+
+    \begin{example}
+\begin{semiverbatim}
+\\begin\{example\}
+  - conteúdo -
+\\end\{example\}
+\end{semiverbatim}
+    \end{example}
+
+\end{frame}
+
+\begin{frame}[fragile]{Figuras e tabelas}
+    \begin{itemize}
+    \item Para criar tabelas e figuras no {\footnotesize BEAMER} usa-se os mesmos comando que em documentos.
+    \end{itemize}
+
+    \begin{example}
+\begin{semiverbatim}
+\small \% Figuras
+\\includegraphics<2->[width=.5\\textlinewidth]\{imagem.jpg\}
+
+\% Tabelas
+\\begin\{tabular\}\{|c|c|\}
+    \\invisible<1>\{X\} \& 0 \\
+    \\hline
+    0 \& \\invisible<1>\{X\}
+\\end\{tabular\}
+\end{semiverbatim}
+    \end{example}
+
+\end{frame}
+
+\begin{frame}{Colunas}
+\end{frame}
+
+
+\subsection{Fórmulas Matemáticas}
+\begin{frame}{Fórmulas Matemáticas}
+
+\end{frame}
+
+
