@@ -4,49 +4,73 @@
 \subsection{Divisão de aquivos}
 \begin{frame}{Divisão de arquivos}
 
-      \begin{itemize}
+    \begin{itemize}
     \item Em projetos com grande quantidade de texto pode ser interessante separar o documento em diferentes arquivos para melhor organização através do comando:    
-    \end{itemize}
-
-    \alert{\textbackslash include\{\textit{nomedoarquivo.tex}\}}
-
-    \begin{itemize}
-     \item Dentro do documento \LaTeX, no ambiente \textit{\textbackslash begin\{document\}} no momento em que aparece o comando o processamento vai imediatamente buscar o texto contido no arquivo.
-    \end{itemize}
-
-    \begin{itemize}
-     \item Caso o arquivo esteja em uma pasta diferente da do arquivo principal, deve ser especificado o caminho completo do arquivo que será incluído.
+    \item[] \alert{\textbackslash include\{\textit{nomedoarquivo}\}}
+    \item É utilizado no corpo do documento para incluir o conteúdo de outro arquivo. Quando utilizado, o \LaTeX\ começará uma nova página antes de processar o arquivo.
+    \item Para incluir outro arquivo sem começar uma nova página utiliza-se o comando
+    \item[] \alert{\textbackslash input\{\textit{nomedoarquivo}\}}
+    \item Caso o arquivo esteja em uma pasta diferente da do arquivo principal, deve ser especificado o caminho completo do arquivo que será incluído.
     \end{itemize}
 
 \end{frame}
   
-\subsection{Utilização de Modelos}
-\begin{frame}[allowframebreaks]{Utilização de Modelos - abnTeX}
+\subsection{Utilização de Classes e Modelos}
+\begin{frame}{Utilização de Classes e Modelos}
 
   \begin{itemize}
-    \item \textit{Modelos} em \LaTeX são formatos pré-definidos de documentos que visam automatizar a formatação do texto de acordo com determinada norma.
-    \item O \textit{abnTeX} é um modelo \LaTeX que atende às normas da ABNT: NBR14724:2001, NBR6028:1990, NBR6027:1989 e NBR6024:1989.
-    \item Entre os itens formatados por esse modelo estão: folha de rosto, folha de aprovação, resumo e \textit{abstract}, capítulos com ou sem numeração, anexos e apêndices, espaçamento entrelinha, estilo e numeração das páginas, bibliografia.
-    \item O modelo pode ser obtido em http://abntex.codigolivre.org.br/;
-    \item A classe de um documento abnTeX é a \textit{abnt}, seu funcionamento é semelhante ao da classe \textit{standart};
-  \end{itemize}
+    \item \textit{Modelos} em \LaTeX\ são arquivos pré-definidos que visam automatizar a formatação do texto de acordo com determinada norma, sendo necessário apenas substituir o texto d0 exemplo pelo seu. Ex:
+    \begin{itemize}
+    \item UTFPR - Prof. Hugo Vieira
+    \item SBC
+    \end{itemize}
+
+    \vspace{0.5cm}
+    
+    \item Além das \textit{classes} padrões do \LaTeX\ também é possível instalar outras. As classes são macros que podem definir desde normas até outros tipos de arquivos. Ex:
+    \begin{itemize}
+    \item abn\TeX
+    \item Beamer
+    \end{itemize}
+    
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Modelos - UTFPR}
+ 
+    \begin{itemize}
+    \item Na Universidade Tecnológica Federal do Paraná há alguns modelos prontos e disponíveis de \LaTeX:
+        \begin{enumerate}
+        \item Modelo para teses e dissertações (CPGEI) 
+        \item Modelo para trabalhos de conclusão de cursos (DAELN) 
+        \item Modelo para trabalhos de disciplinas (Oficinas de Integração) 
+        \end{enumerate}
+    \item Todos podem ser obtidos no endereço: \url{http://pessoal.utfpr.edu.br/hvieir/orient/}
+    \end{itemize}
 
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Utilização de Modelos - UTFPR}
- 
-  \begin{itemize}
-   \item Na Universidade Tecnológica Federal do Paraná há alguns modelos prontos e disponíveis de \LaTeX:
+\begin{frame}{Modelos - SBC}
     
-    \begin{enumerate}
-      \item Modelo para teses e dissertações (CPGEI) 
-      \item Modelo para trabalhos de conclusão de cursos (DAELN) 
-      \item Modelo para trabalhos de disciplinas (Oficinas de Integração) 
-    \end{enumerate}
+    \begin{itemize}
+    \item A SBC - Sociedade Brasileira de Computação - também disponibiliza modelos \LaTeX\ para publicação em seus eventos:
+        \begin{enumerate}
+        \item Modelos para publicação de artigos
+        \item Modelos para publicação de capítulos de livros
+        \end{enumerate}
+    \item Para fazer o download acesse: \url{http://www.sbc.org.br/}, vá no menu \textit{Documentos > Publicações > Templates para Artigos e Capítulos de Livros}
+    \end{itemize}
 
-    \item Todos podem ser obtidos no endereço: http://pessoal.utfpr.edu.br/hvieir/orient/
-      
-  \end{itemize}
+\end{frame}
+
+\begin{frame}{Classes - abn\TeX}
+
+    \begin{itemize}
+    \item O abn\TeX\ é uma classe \LaTeX que atende às normas da ABNT: NBR14724:2001, NBR6028:1990, NBR6027:1989 e NBR6024:1989.
+    \item Entre os itens formatados por esse modelo estão: folha de rosto, folha de aprovação, resumo e \textit{abstract}, capítulos com ou sem numeração, anexos e apêndices, espaçamento entrelinha, estilo e numeração das páginas, bibliografia.
+    \item O modelo pode ser obtido em \url{http://abntex.codigolivre.org.br/};
+    \item A classe de um documento abn\TeX\ é a \textit{abnt}, seu funcionamento é semelhante ao da classe \textit{report};
+    \end{itemize}
 
 \end{frame}
 
@@ -69,10 +93,13 @@
 
   \begin{itemize}
     \item Em projetos pequenos, onde a bibliografia não será reutilizada, o método mais eficiente de fazer a bibliografia
-    é através do sistema incorporado ao próprio \LaTeX\ através do ambiente \textit{\textbackslash begin\{thebibliography\}}.    
+    é através do sistema incorporado ao próprio \LaTeX\ através do ambiente \alert{\textbackslash begin\{thebibliography\}}.    
+    \item O comando \textit{thebibliography} deve estar localizado logo acima do \textit{\textbackslash end\{document\}}.
+    \item O comando \alert{\textbackslash bibitem} define um item da bibliografia nomeado com o identificador entre os colchetes.
+    \item Todo o texto após o \textit{bibitem} será transcrito no arquivo final sem qualquer modificação.
   \end{itemize}
 
-  \begin{block}{}
+  \begin{example}
   \begin{semiverbatim}
     \\begin\{thebibliography\}
     \\bibitem\{lamport94\}
@@ -85,16 +112,12 @@
 
     \\end\{thebibliography\}
   \end{semiverbatim}
-  \end{block}
+  \end{example}
+
+    \newpage
 
   \begin{itemize}
-    \item O comando \textit{thebibliography} deve estar localizado logo acima do \textit{\textbackslash end\{document\}}.
-    \item O comando \textit{bibitem} define um item da bibliografia nomeado com o identificador entre os colchetes.
-    \item Todo o texto após o \textit{bibitem} será transcrito no arquivo final sem qualquer modificação.
-  \end{itemize}
-
-  \begin{itemize}
-   \item Para citar um item contido na bibliografia o comando \textit{\\cite\{cite\_key\}}, onde \textit{cite\_key} é o 
+   \item Para citar um item contido na bibliografia o comando \alert{\textbackslash cite\{cite\_key\}}, onde \textit{cite\_key} é o 
    identificador definido no \textit{bibitem}, deve ser inserido no trecho do texto onde a citação aparecerá.
    \item Para especificar uma página, figura ou teorema da referência, o comando deve ser \textit{cite[especificao]\{cite\_key\}}.
    \item Para múltiplas citações, deve-se user vírgula entre os itens, \textit{cite\{cite\_key1,cite\_key2,cite\_key3\}}.    
@@ -110,34 +133,40 @@
     \item Uma entrada padrão do BibTex é a seguinte:
   \end{itemize}
 
-  \begin{block}{}
+  \begin{example}{}
     \begin{semiverbatim}
-     @book\{ibrahim,
-      address={Rio de Janeiro},
-      author={Ibrahim Cesar},
-      title={EQM},
-      publisher={Osvira Lata},
-      year={2008}
+     @book\{
+      ibrahim,
+      address=\{Rio de Janeiro\},
+      author=\{Ibrahim Cesar\},
+      title=\{EQM\},
+      publisher=\{Osvira Lata\},
+      year=\{2008\}
     \}
     \end{semiverbatim}
-  \end{block}
+  \end{example}
+
+    \newpage
 
   \begin{itemize}
-   \item Toda entrada BibTex começa com um tipo (lista a seguir). Os tipos são utilizados na padronização da referência no arquivo final. Cada tipo possui determinados campos obrigatórios e opcionais (lista a seguir). 
-    \item Para cada tipo de entrada determinados campos são utilizados;
+   \item Toda entrada BibTex começa com um tipo. Os tipos são utilizados na padronização da referência no arquivo final. Cada tipo possui determinados campos obrigatórios e opcionais (lista a seguir). 
     \item A primeira palavra em um item BibTex depois do tipo é a identificação daquela entrada e deve ser usada toda vez que a referência for usada;
     \item No arquivo contendo o código \LaTeX\ os itens do BibTex devem ser citados utilizando os comandos \textit{\\cite\{citekey\}} ou \textit{\\citeonline\{citekey\}}, onde \textit{citekey} é o identificador do item;
     \item Para montar a bibliografia o comando é: \textit{\\bibliography\{file\}} onde \textit{file} é o nome do arquivo, sem a extensão.
+
+    \newpage
+    
     \item Na prática, os passos para criação de uma bibliografia pelo BibTex são os seguintes:
     \begin{enumerate}
       \item Criar o arquivo .bib;
-      \item Gerar o arquivo .aux (rodando \textit{pdflatex} por exemplo);
-      \item Rodar o comando \textit{bibtex arquivo} cada vez que o arquivo .bib for modificado;
+      \item Gerar o arquivo .aux (executando \textit{pdflatex} por exemplo);
+      \item Rodar o comando \textit{bibtex} cada vez que o arquivo .bib for modificado;
       \item Rodar novamente o \textit{pdflatex} para criar o arquivo com as referências.
     \end{enumerate}
 
   \end{itemize}
   
+  \newpage
 
   \begin{itemize}
     \item Os tipos definidos são:
@@ -157,7 +186,6 @@
       \item \textbf{@techreport} Um relatório públicado por uma escola ou instituição.
       \item \textbf{@unpublished} Um documento com autor e título, mas não publicado oficialmente.
     \end{itemize}
-  
   \end{itemize}
 
   \begin{itemize}
@@ -189,17 +217,8 @@
       \item \textit{url}: Endereço WWW.
       \item \textit{volume}: Volume para uma obra multi-volume;
       \item \textit{year}: Ano de publicação.
-
     \end{itemize}
-
   \end{itemize}
 
-  
-  
-
-
-
- 
 \end{frame}
-
 
