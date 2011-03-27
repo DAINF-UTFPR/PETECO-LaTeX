@@ -341,17 +341,25 @@ Texto centralizado.
     \end{columns}
 \end{frame}
 
-%% Tipos de arquivo %%
-%\subsection{Tipos de arquivo}
+% Minipage %
+\begin{frame}[fragile]{Minipage}
+    \begin{itemize}
+    \item O ambiente \textit{minipage} simula uma minipágina, ou janela, em uma posição da página. É útil para dividir trechos do texto em colunas, fazer comparações ou inserir figuras e tabelas lado a lado.
+    \item[] \alert{\textbackslash begin\{\textit{minipage}\}[\textit{alinhamento}]\{\textit{largura}\}}
+    \item A \textit{largura} pode ser dada em relação à largura do texto \verb|\textwidth| ou em unidade fixa (cm, pt) e o \textit{alinhamento} pode ser \textit{c}, \textit{b} ou \textit{t}, referente ao texto ao seu redor.
+    \end{itemize}
 
-%\begin{frame}{Tipos de arquivo}
-%\end{frame}
-
-%% Primeiro documento %%
-%\subsection{Primeiro documento}
-
-%\begin{frame}{Primeiro documento}
-%\end{frame}
+    \begin{example}
+\begin{semiverbatim}\footnotesize
+    \\begin\{minipage\}[t]\{.5\\textwidth\}
+        Coluna 1.
+    \\end\{minipage\}
+    \\begin\{minipage\}[t]\{.5\\textwidth\}
+        Coluna 2.
+    \\end\{minipage\}
+\end{semiverbatim}
+    \end{example}
+\end{frame}
 
 %% Inserção de Figuras e Tabelas %%
 \subsection{Inserção de Figuras e Tabelas}
@@ -442,6 +450,7 @@ esquerda \& centro \& direita \\\\
     \end{block}
 
     \begin{block}{Saída}
+    \footnotesize{
         \begin{tabular}{l|c|r}
         esquerda & centro & direita \\
         \hline
@@ -452,22 +461,23 @@ esquerda \& centro \& direita \\\\
         7 & 8 & 9 \\
         \hline
         \end{tabular}
+    }
     \end{block}
     \end{columns}
 \end{frame}
 
 \begin{frame}[allowframebreaks,fragile]{Ambientes flutuantes}
-    O \LaTeX\ possui ambientes ``flutuantes'', isto é, ambientes que são dispostos automaticamente no texto de acordo com seu conteúdo.
-    
-    Os ambientes Figure e Table fornecem comandos para dinamização dos conteúdos com o documento, como:
-    
     \begin{itemize}
-    \item título/legenda;
-    \item numeração;
-    \item referência;
-    \item lista de figuras;
+    \item O \LaTeX\ possui ambientes ``flutuantes'', isto é, ambientes que dispõem o texto automaticamente de acordo com seu conteúdo.
+    \item Os ambientes Figure e Table fornecem comandos para dinamização dos conteúdos com o documento, como:
+        \begin{itemize}
+        \item título/legenda;
+        \item numeração;
+        \item referência;
+        \item lista de figuras;
+        \end{itemize}
     \end{itemize}
-    
+
     \begin{example}
         \begin{semiverbatim}
 \\begin\{figure\}[\textit{pos}]
