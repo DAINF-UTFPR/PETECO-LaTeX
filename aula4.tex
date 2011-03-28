@@ -5,8 +5,94 @@
 \part{Aula 4}
 \section{Aula 4}
 
+%% Fórmulas Matemáticas %% 
+\subsection{Fórmulas Matemáticas}
+\begin{frame}[fragile]{Fórmulas Matemáticas}
+    \begin{itemize}
+    \item Caso não consiga utilizar algum simbolo é necessário utilizar o pacotes \LaTeX\ - \verb|amsmath| e \verb|amssymb|.
+    \item O \LaTeX\ possui alguns ambientes específicos para inserção de símbolos matemáticos (\textit{modo matemático}). Os mais utilizados são:
+        \begin{itemize}
+        \item \alert{\$} ... \alert{\$} -- para inserir no meio do texto.
+        \item \alert{\textbackslash begin\{displaymath\} ... \textbackslash end\{displaymath\}} -- para inserir em linhas separadas do texto, sem numeração
+        \item \alert{\textbackslash begin\{equation\} ... \textbackslash end\{equation\}} -- para inserir em linhas separadas do texto, enumeradas
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Diferenças do modo matemático}
+    \begin{enumerate}
+    \item Espaços em branco e mudanças de linha não tem significado. Para espaçar o texto deve-se usar os comandos especiais:
+        \begin{itemize}
+        \item \alert{\textbackslash $\sqcup$} -- espaço simples ($a\ b$)
+        \item \alert{\textbackslash quad} -- espaço médio ($a \quad b$)
+        \item \alert{\textbackslash qquad} -- espaço grande ($a \qquad b$)
+        \end{itemize}
+    \item Não são permitidas linhas em branco. Só pode haver um parágrafo por fórmula.
+    \item Cada letra é considerada como o nome de uma variável. Para se inserir texto normal deve-se utilizar o comando \verb|\textrm{..}|.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[allowframebreaks,fragile]{Símbolos}
+    \begin{block}{Letras gregas}
+    \small{
+\begin{verbatim}
+    \begin{displaymath}
+    \alpha \ \beta \ \gamma \textrm{ ... } 
+    \Gamma \ \Delta \ \Theta \textrm{ ...}
+    \end{displaymath}
+\end{verbatim}
+    \begin{displaymath}
+    \alpha \  \beta \ \gamma \textrm{ ... }
+    \Gamma \ \Delta \ \Theta \textrm{ ...}
+    \end{displaymath}
+        }
+    \end{block}
+
+    \begin{block}{Potências e índices}
+    \small{
+    \begin{tabular}{l l l l}
+    \verb|$a^b$|        & $a^b$     & \verb|$a_b$|          & $a_b$         \\
+    \verb|$a^x+y$|      & $a^x+y$   & \verb|$a_2b$|         & $a_2b$        \\
+    \verb|$a^{x+y}$|    & $a^{x+y}$ & \verb|$a_{2b}$|       & $a_{2b}$      \\
+    \verb|$a^x_y$|      & $a^x_y$   & \verb|$a^{2b}_{x+y}$| & $a^{2b}_{x+y}$
+    \end{tabular}
+    }
+    \end{block}
+
+    \begin{block}{Frações}
+    \small{
+    \begin{tabular}{l l}
+    \verb|$p/q$|                        & $p/q$ \\
+    \verb|$\frac{a+b}{c+d}$|            & $\qquad \frac{a+b}{c+d}$ \\
+    \verb|\frac{x}{1+\frac{x}{1+x}}|    & $\qquad \qquad \frac{x}{1+\frac{x}{1+x}}$
+    \end{tabular}
+    }
+    \end{block}
+
+    \begin{block}{Funções}
+     \small{
+    \begin{tabular}{l l}
+    \verb|$\cos(x)$|    & $\cos(x)$  \\
+    \verb|$\sin(x)$|    & $\sin(x)$ \\
+    \verb|$\log x$|     & $\log x$ \\
+    \verb|$\tan(x)=| \\ \verb|\frac{sin(x)}{cos(x)}$|    & $\tan(x) = \frac{sin(x)}{cos(x)}$ \\
+    \verb|$\lim_{x \to 0} | \\ \verb|\frac{sin(x)}{x}$|  & $\lim_{x \to 0} \frac{sin(x)}{x}$
+    \end{tabular}
+    }
+    \end{block}
+
+\end{frame}
+
+%% Matrizes %%
+\subsection{Matrizes}
+\begin{frame}{Matrizes}
+
+\end{frame}
+
+%% Beamer %%
 \subsection{Apresentações (BEAMER)}
 
+% Introdução %
 \begin{frame}[fragile]{Introdução}
     \begin{itemize}
     \item {\footnotesize BEAMER} é uma classe do \LaTeX\ para criação de apresentações de slides ou transparências.
@@ -15,6 +101,7 @@
     \end{itemize}
 \end{frame}
 
+% Vantagens %
 \begin{frame}[fragile]{Vantagens}
     \begin{itemize}
     \item Pode ser usado com \verb|pdflatex|, \verb|latex+dvips|, \verb|luatex| e \verb|xelatex|.
@@ -24,6 +111,7 @@
     \end{itemize}
 \end{frame}
 
+% Estrutura básica %
 \begin{frame}[fragile]{Estrutura básica}
     Uma apresentação em {\footnotesize BEAMER} tem a mesma estrutura de um documento \LaTeX.
     
@@ -49,16 +137,19 @@
 }
 \end{frame}
 
+% Frames %
 \begin{frame}[fragile]{Frames}
     \begin{itemize}
     \item Frame é o ambiente onde se cria um ou uma sequência de slides.
     \item[] \alert{\textbackslash begin\{\textit{frame}\}[\textit{opções}]\{\textit{Título}\}}
-    \item Eles também podem ser criados com o comando \alert{\textbackslash frame\{\}}.
+    \item[] ou
+    \item[] \alert{\textbackslash frame\{\}}.
     \item Se o conteúdo exceder um slide, a opção \alert{allowframebreaks} pode ser utilizada para dividir o frame em várias partes.
     \item Se a divisão não ficar como desejado, também pode-se usar o comando \alert{\textbackslash newpage} para começar um novo slide a partir deste ponto.
     \end{itemize}
 \end{frame}
 
+% Página de título %
 \begin{frame}[fragile]{Página de título}
     \begin{itemize}
     \item Uma página de título é composta por 4 atributos: \alert{\textbackslash title}, \alert{\textbackslash author}, \alert{\textbackslash institute} e \alert{\textbackslash date}.
@@ -79,6 +170,7 @@
     \end{example}
 \end{frame}
 
+% Sumário %
 \begin{frame}[fragile]{Sumário}
     \begin{itemize}
     \item O comando para se criar um sumário é o mesmo que nos outros documentos, porém ele deve estar dentro de um frame
@@ -93,6 +185,7 @@
     \end{example}
 \end{frame}
 
+% Sobreposições e efeitos %
 \begin{frame}[fragile]{Sobreposições e efeitos (\textit{Overlay})}
     \begin{itemize}
     \item Para se fazer efeitos com o texto, como aparecer após 1 clique, mudar de cor e sumir, pode-se utilizar
@@ -127,7 +220,15 @@
 
         \only<2>{
             \begin{semiverbatim}
-Contador: \\only<1>\{1\} \\only<2>\{2\} \\only<3>\{3\} \\only<4>\{4\} \\only<5>\{5\}
+Contador: \\only<1>\{1\}
+          
+          \\only<2>\{2\}
+          
+          \\only<3>\{3\}
+          
+          \\only<4>\{4\}
+          
+          \\only<5>\{5\}
             \end{semiverbatim}
         }
 
@@ -164,6 +265,7 @@ Contador: \\only<1>\{1\} \\only<2>\{2\} \\only<3>\{3\} \\only<4>\{4\} \\only<5>\
     \end{description}
 \end{frame}
 
+% Ambiente Black %
 \begin{frame}[allowframebreaks,fragile]{Ambiente Block}
     \begin{itemize}
     \item Block é um ambiente que forma uma caixa colorida ao redor do conteúdo, útil para destacar informações importantes.
@@ -180,7 +282,7 @@ Contador: \\only<1>\{1\} \\only<2>\{2\} \\only<3>\{3\} \\only<4>\{4\} \\only<5>\
 \end{semiverbatim}
     \end{block}
    
-   \begin{alertblock}{título do bloco}
+   \begin{alertblock}{Título do bloco}
 \begin{semiverbatim}
 \\begin\{alertblock\}\{Título do bloco\}
   - conteúdo -
@@ -198,6 +300,7 @@ Contador: \\only<1>\{1\} \\only<2>\{2\} \\only<3>\{3\} \\only<4>\{4\} \\only<5>\
 
 \end{frame}
 
+% Figuras e Tabelas %
 \begin{frame}[fragile]{Figuras e tabelas}
     \begin{itemize}
     \item Para criar tabelas e figuras no {\footnotesize BEAMER} usa-se os mesmos comando que em documentos.
@@ -219,13 +322,27 @@ Contador: \\only<1>\{1\} \\only<2>\{2\} \\only<3>\{3\} \\only<4>\{4\} \\only<5>\
 
 \end{frame}
 
-\begin{frame}{Colunas}
+% Colunas %
+\begin{frame}[fragile]{Colunas}
+    \begin{itemize}
+    \item O {\footnotesize BEAMER} dispõe de um ambiente muito útil para dividir o slide, ou partes dele, em multiplas colunas.
+    \item[] \alert{\textbackslash begin\{\textit{columns}\}}
+    \item Ele funciona como o ambiente \textit{itemize}, para começar uma nova coluna usa-se o comando \alert{\textbackslash column[\textit{largura}]}
+    \end{itemize}
+
+    \begin{example}
+    \begin{semiverbatim}
+    \footnotesize\\frame\{
+        \\begin\{columns\}
+        \\column[.5\\textwidth]
+        ...
+        \\column[.3\\textwidth]
+        ...
+        \\column[.2\\textwidth]
+        ...
+        \\end\{columns\}
+    \}
+\end{semiverbatim}
+    \end{example}
 \end{frame}
-
-
-\subsection{Fórmulas Matemáticas}
-\begin{frame}{Fórmulas Matemáticas}
-
-\end{frame}
-
 
