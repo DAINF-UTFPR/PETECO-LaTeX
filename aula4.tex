@@ -21,14 +21,10 @@
 
 \begin{frame}[fragile]{Diferenças do modo matemático}
     \begin{enumerate}
-    \item Espaços em branco e mudanças de linha não tem significado. Para espaçar o texto deve-se usar os comandos especiais:
-        \begin{itemize}
-        \item \alert{\textbackslash $\sqcup$} -- espaço simples ($a\ b$)
-        \item \alert{\textbackslash quad} -- espaço médio ($a \quad b$)
-        \item \alert{\textbackslash qquad} -- espaço grande ($a \qquad b$)
-        \end{itemize}
+    \item Espaços em branco e mudanças de linha não tem significado. Para espaçar o texto deve-se usar os comandos especiais: \verb|\, |, \verb*|\ |, \verb|\quad| e \verb|\qquad|.
     \item Não são permitidas linhas em branco. Só pode haver um parágrafo por fórmula.
-    \item Cada letra é considerada como o nome de uma variável. Para se inserir texto normal deve-se utilizar o comando \verb|\textrm{..}|.
+    \item Cada letra é considerada como o nome de uma variável. Para se inserir texto formatado deve-se utilizar os comandos \verb|\textrm|, \verb|\textbf|, \verb|\textit{}|\dots
+    \item Caso deseje formatar as fórmulas, usa-se: \verb|\mathrm|, \verb|\mathbf|, \verb|\mathit|, \dots
     \end{enumerate}
 \end{frame}
 
@@ -95,9 +91,9 @@
 % Introdução %
 \begin{frame}[fragile]{Introdução}
     \begin{itemize}
-    \item {\footnotesize BEAMER} é uma classe do \LaTeX\ para criação de apresentações de slides ou transparências.
-    \item Uma apresentação em {\footnotesize BEAMER} é criada como qualquer outro documento \LaTeX, diferentes slides são colocados em ambientes (chamados \textit{frames}).
-    \item Muitos pacotes de \LaTeX\ já contêm a classe {\footnotesize BEAMER}, no entanto, sua versão atualizada pode ser encontrada em: \url{http://bitbucket.org/rivanvx/beamer}
+    \item \beamer\ é uma classe do \LaTeX\ para criação de apresentações de slides ou transparências.
+    \item Uma apresentação em \beamer\ é criada como qualquer outro documento \LaTeX, diferentes slides são colocados em ambientes (chamados \textit{frames}).
+    \item Muitos pacotes de \LaTeX\ já contêm a classe \beamer, no entanto, sua versão atualizada pode ser encontrada em: \url{http://bitbucket.org/rivanvx/beamer}
     \end{itemize}
 \end{frame}
 
@@ -113,7 +109,7 @@
 
 % Estrutura básica %
 \begin{frame}[fragile]{Estrutura básica}
-    Uma apresentação em {\footnotesize BEAMER} tem a mesma estrutura de um documento \LaTeX.
+    Uma apresentação em \beamer\ tem a mesma estrutura de um documento \LaTeX.
     
 {\footnotesize
 \begin{verbatim}
@@ -156,7 +152,7 @@
     \item Para inserí-la usa se o comando \alert{\textbackslash titlepage}.
     \end{itemize}
 
-    \begin{example}
+    \begin{exampleblock}{Exemplo}
     \begin{semiverbatim}
 \\title\{Título da apresentação\}
 \\author\{Nome do(s) autor(es)\}
@@ -167,7 +163,7 @@
     \\titlepage
     \}
     \end{semiverbatim}
-    \end{example}
+    \end{exampleblock}
 \end{frame}
 
 % Sumário %
@@ -176,13 +172,13 @@
     \item O comando para se criar um sumário é o mesmo que nos outros documentos, porém ele deve estar dentro de um frame
     \end{itemize}
 
-    \begin{example}
+    \begin{exampleblock}{Exemplo}
     \begin{semiverbatim}
 \\frame\{
     \alert{\\tableofcontents}
     \}
     \end{semiverbatim}
-    \end{example}
+    \end{exampleblock}
 \end{frame}
 
 % Sobreposições e efeitos %
@@ -290,23 +286,23 @@ Contador: \\only<1>\{1\}
 \end{semiverbatim}
     \end{alertblock}
 
-    \begin{example}
+    \begin{exampleblock}{Exemplo}
 \begin{semiverbatim}
-\\begin\{example\}
+\\begin\{exampleblock\}\{Exemplo\}
   - conteúdo -
-\\end\{example\}
+\\end\{exampleblock\}\{Exemplo\}
 \end{semiverbatim}
-    \end{example}
+    \end{exampleblock}
 
 \end{frame}
 
 % Figuras e Tabelas %
 \begin{frame}[fragile]{Figuras e tabelas}
     \begin{itemize}
-    \item Para criar tabelas e figuras no {\footnotesize BEAMER} usa-se os mesmos comando que em documentos.
+    \item Para criar tabelas e figuras no \beamer\ usa-se os mesmos comando que em documentos.
     \end{itemize}
 
-    \begin{example}
+    \begin{exampleblock}{Exemplo}
 \begin{semiverbatim}
 \small \% Figuras
 \\includegraphics<2->[width=.5\\textlinewidth]\{imagem.jpg\}
@@ -318,19 +314,19 @@ Contador: \\only<1>\{1\}
     0 \& \\invisible<1>\{X\}
 \\end\{tabular\}
 \end{semiverbatim}
-    \end{example}
+    \end{exampleblock}
 
 \end{frame}
 
 % Colunas %
 \begin{frame}[fragile]{Colunas}
     \begin{itemize}
-    \item O {\footnotesize BEAMER} dispõe de um ambiente muito útil para dividir o slide, ou partes dele, em multiplas colunas.
+    \item O \beamer\ dispõe de um ambiente muito útil para dividir o slide, ou partes dele, em multiplas colunas.
     \item[] \alert{\textbackslash begin\{\textit{columns}\}}
     \item Ele funciona como o ambiente \textit{itemize}, para começar uma nova coluna usa-se o comando \alert{\textbackslash column[\textit{largura}]}
     \end{itemize}
 
-    \begin{example}
+    \begin{exampleblock}{Exemplo}
     \begin{semiverbatim}
     \footnotesize\\frame\{
         \\begin\{columns\}
@@ -343,6 +339,6 @@ Contador: \\only<1>\{1\}
         \\end\{columns\}
     \}
 \end{semiverbatim}
-    \end{example}
+    \end{exampleblock}
 \end{frame}
 

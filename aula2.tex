@@ -13,13 +13,17 @@
 	\item A entrada para o \LaTeX\ é um arquivo de texto, ASCII ou UTF-8. Sendo possível criá-lo em qualquer editor de texto.
 	\end{itemize}
 	
-	\alert{\it nomedoarquivo.tex \\ nomedoarquivo.bib} (Aula 3)
+	\alert{\it nomedoarquivo.tex}
+
+    \pause
+
+    {\it nomedoarquivo.bib (opcional) }
 
 	\vspace{.5cm}
 	\pause
 
 	\begin{itemize}
-	\item Arquivos auxiliares:
+	\item Arquivos auxiliares (gerados automaticamente):
 	\end{itemize}
 	
 	{\it nomedoarquivo.\{aux, log, nav, out, snm, toc, \dots\} }
@@ -34,14 +38,19 @@
 	\item Os comandos no \LaTeX\ têm a seguinte forma:
 	\end{itemize}
 
-	\alert{\textbackslash nomedocomando\{\textit{parâmetros(opcional)}\} }
+	\alert{\textbackslash nomedocomando}
+
+	\begin{exampleblock}{Exemplo}
+		\textbackslash LaTeX \\ \textbackslash alpha
+	\end{exampleblock}
 	
 	\vspace{.5cm}
 
-	\begin{example}
-		\textbackslash LaTeX \\
-		\textbackslash section\{Introdução\}		
-	\end{example}
+	\alert{\textbackslash nomedocomando\{\textit{parâmetros}\} }
+
+	\begin{exampleblock}{Exemplo}
+		\textbackslash section\{Introdução\} \\ \textbackslash sqrt\{x\}
+	\end{exampleblock}
 \end{frame}
 
 % Caracteres Especiais %
@@ -70,15 +79,14 @@
 	}
 \end{frame}
 
-% Espaçamento e parágrafos %
-\begin{frame}[fragile]{Espaçamento e parágrafos}
+%  Espaços e parágrafos %
+\begin{frame}[fragile,allowframebreaks]{Espaços e parágrafos}
 	\begin{itemize}
-	\item Apenas um espaço em branco é considerado pelo \LaTeX, para adicionar mais espaços é necessário inserir o comando \alert{``\textbackslash\ ''}.
+	\item Apenas um espaço em branco é considerado pelo \LaTeX.
 	\item O comando \alert{\textbackslash\textbackslash} faz uma quebra-de-linha.
 	\item Uma linha em branco representa um novo parágrafo.
 	\end{itemize}
 
-    
     \begin{block}{Entrada}
         \small
         \begin{semiverbatim}
@@ -95,6 +103,40 @@ E uma linha em branco representa um novo parágrafo.
 
         E uma linha em branco representa um novo parágrafo.
     \end{block}
+    
+    \begin{itemize}
+    \item Para adicionar mais espaços pode-se usar os comandos:
+        \begin{description}
+        \item[\textbackslash ,] um caracter de espaço (\,)
+        \item[\textbackslash \textvisiblespace] um espaço mediano (\ )
+        \item[\textbackslash quad] um tab (\quad)
+        \item[\textbackslash qquad] dois tabs (\qquad)
+        \end{description}
+    \end{itemize}
+\end{frame}
+
+% Espaçamentos %
+\begin{frame}{Espaçamento Vertical}
+    \begin{itemize}
+    \item O \LaTeX determina automaticamente os espaços entre dois parágrafos, itens, figuras, \dots Em casos especiais, que necessite um espaçamento maior, pode-se usar o comando
+    \item[] \alert{\textbackslash vspace\{\textit{comprimento}\}}
+    
+    \vspace{.5cm}
+
+    \item Este comando deve ser utilizado sempre entre duas linhas vazias.
+    \item O comprimento pode ser dado em cm, mm, in, pt, e outras.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Espaçamento Horizontal}
+    \begin{itemize}
+    \item Do mesmo modo que se pode definir o espaçamento vertical, pode-se definir o espaçamento horizontal
+    \item[] \alert{\textbackslash hspace\{\textit{comprimento}\}}
+
+    \vspace{.5cm}
+
+    \item Diferentemente do \verb|vspace|, o \verb|hspace| pode ser utilizado entre o texto.
+    \end{itemize}
 \end{frame}
 
 %% Estrutura do arquivo %%
@@ -137,14 +179,14 @@ E uma linha em branco representa um novo parágrafo.
 
 	\vspace{.5cm}
 
-	\begin{example}
+	\begin{exampleblock}{Exemplo}
 		\begin{itemize}
 		\item \textbackslash usepackage[\textit{brazil}]\{\textit{babel}\}
 		\item \textbackslash usepackage[\textit{utf8}]\{\textit{inputenc}\}
 		\item \textbackslash usepackage[\textit{T1}]\{\textit{fontenc}\}
 		\item \textbackslash usepackage\{\textit{graphicx}\}
 		\end{itemize}
-	\end{example}
+	\end{exampleblock}
 \end{frame}
 
 % Corpo do texto %
@@ -161,7 +203,7 @@ E uma linha em branco representa um novo parágrafo.
 
     \alert{\textbackslash end\{\it document\}}
 
-    \begin{example}
+    \begin{exampleblock}{Exemplo}
         \begin{semiverbatim}
 \\documentclass[11pt,a4paper]\{article\}
 \\usepackage[brazil]\{babel\}
@@ -171,7 +213,7 @@ E uma linha em branco representa um novo parágrafo.
 ...
 \\end\{document\}
 \end{semiverbatim}
-    \end{example}
+    \end{exampleblock}
 \end{frame}
 
 %% Comandos Globais de Configuração %%
@@ -182,14 +224,20 @@ E uma linha em branco representa um novo parágrafo.
     \begin{itemize}
     \item O \LaTeX\ suporta até três níveis de seção e dois níveis de parágrafo na classe ``article'':
     \end{itemize}
-    
-    \alert{\textbackslash section\{...\} \\
-           \textbackslash subsection\{...\} \\
-           \textbackslash subsubsection\{...\} \\
-           \textbackslash paragraph\{...\} \\
-           \textbackslash subparagraph\{...\} \\
+   
+    \begin{columns}
+    \column{.5\textwidth}
+    \alert{\quad \textbackslash section\{...\} \\
+           \quad \textbackslash subsection\{...\} \\
+           \quad \textbackslash subsubsection\{...\} \\
+           \quad \textbackslash paragraph\{...\} \\
+           \quad \textbackslash subparagraph\{...\} \\
         }
-    
+    \column{.5\textwidth}
+    \small
+    obs: Caso não queira que apareça a numeração é só colocar um * antes das chaves. Ex: \textbackslash section*\{\dots\}
+    \end{columns}
+
     \begin{itemize}
     \item Em adicional, nas classes ``report'' e ``book'' há um seção superior
     \end{itemize}
@@ -200,10 +248,10 @@ E uma linha em branco representa um novo parágrafo.
 % Título e Sumário %
 \begin{frame}{Título e sumário}
     \begin{itemize}
-    \item Para gerar o título de todo o documento usa-se
+    \item Para gerar o título do documento usa-se
     \end{itemize}
 
-   \alert{\textbackslash maketitle}
+   \alert{\textbackslash maketitle} (opcional)
 
     \begin{itemize}
     \item E seu conteúdo é definido pelo seguintes comandos
@@ -349,7 +397,7 @@ Texto centralizado.
     \item A \textit{largura} pode ser dada em relação à largura do texto \verb|\textwidth| ou em unidade fixa (cm, pt) e o \textit{alinhamento} pode ser \textit{c}, \textit{b} ou \textit{t}, referente ao texto ao seu redor.
     \end{itemize}
 
-    \begin{example}
+    \begin{exampleblock}{Exemplo}
 \begin{semiverbatim}\footnotesize
     \\begin\{minipage\}[t]\{.5\\textwidth\}
         Coluna 1.
@@ -358,14 +406,14 @@ Texto centralizado.
         Coluna 2.
     \\end\{minipage\}
 \end{semiverbatim}
-    \end{example}
+    \end{exampleblock}
 \end{frame}
 
 %% Inserção de Figuras e Tabelas %%
 \subsection{Inserção de Figuras e Tabelas}
 
 % Figuras %
-\begin{frame}[fragile]{Figuras}
+\begin{frame}[allowframebreaks,fragile]{Figuras}
     \begin{itemize}
     \item Para inserir figuras é necessário utilizar o pacote \textit{graphicx}, ele permite a inserção de gráficos nos mais variados formatos (JPG, BMP, GIF, PS, ...) através do comando:
     \end{itemize}
@@ -376,7 +424,7 @@ Texto centralizado.
     \item É necessário inserí-lo dentro do ambiente \textit{figure}.
     \end{itemize}
 
-    \begin{example}
+    \begin{exampleblock}{Exemplo}
         \begin{semiverbatim}
 \small\\begin\{figure\}[h]
 \\includegraphics[width=5cm]\{imagem.jpg\}
@@ -384,12 +432,32 @@ Texto centralizado.
 \\label\{fig:01\}
 \\end\{figure\}
 \end{semiverbatim}
-    \end{example}
+    \end{exampleblock}
+
+    \begin{itemize}
+    \item Com o pacote \verb|subfigure| podemos inserir mais de uma figura simultaneamente com o comando \alert{\textbackslash subfigure}
+    \end{itemize}
+
+    \begin{exampleblock}{Exemplo}
+    \begin{semiverbatim}
+\footnotesize\\usepackage\{subfigure\}
+
+\\begin\{figure\}[!htb]
+  \\begin\{center\}
+    \\subfigure[desc (a) ]\{\\includegraphics\{fig01.jpg\}\}\\quad
+    \\subfigure[desc (b)]\{\\includegraphics\{fig02.jpg\}\} \\\\
+    \\subfigure[desc (c)]\{\\includegraphics\{fig03.jpg\}\} \\quad
+    \\subfigure[desc (d)]\{\\includegraphics\{fig04.jpg\}\}
+  \\caption\{Caption da figura.\}\\label\{fig:exemploDeSubfigure\}
+  \\end\{center\}
+\\end\{figure\}
+\end{semiverbatim}
+    \end{exampleblock}
 \end{frame}
 
 
 % Tabelas %
-\begin{frame}[allowframebreaks]{Sintaxe}
+\begin{frame}[allowframebreaks]{Tabelas}
     \begin{itemize}
     \item As tabelas são criadas dentro do ambiente \textit{tabular}
     \end{itemize}
@@ -478,15 +546,15 @@ esquerda \& centro \& direita \\\\
         \end{itemize}
     \end{itemize}
 
-    \begin{example}
+    \begin{exampleblock}{Exemplo}
         \begin{semiverbatim}
-\\begin\{figure\}[\textit{pos}]
+\\begin\{figure\}[\textit{posição}]
   \\includegraphics\{...\}
   \\caption\{Legenda da figura\}
   \\label\{fig:exemplo\}
 \\end\{figure\}
 
-\\begin\{table\}[\textit{pos}]
+\\begin\{table\}[\textit{posição}]
   \\caption\{Titulo da tabela\}
   \\begin\{tabular\}\{...\}
   ...
@@ -494,7 +562,18 @@ esquerda \& centro \& direita \\\\
   \\label\{tab:exemplo\}
 \\end\{table\}
 \end{semiverbatim}
-    \end{example}
+    \end{exampleblock}
+
+    \begin{itemize}
+    \item Caso o texto tenha 2 colunas, mas você quer a figura ou a tabela usando a página inteira, coloca-se um asterisco:
+    \item[] {\small \textbackslash begin\alert{*}\{figure\}}
+    \item[] {\small \textbackslash end\{figure\}}
+
+    \vspace{.5cm}
+
+    \item A \textit{posição} pode ser \verb|h|, \verb|t| e \verb|b|, para ``forçar'' a posição utiliza-se uma exclamação.
+    \item[] {\small \textbackslash begin\{figure\}[\alert{!}h]}
+    \end{itemize}
 \end{frame}
 
 

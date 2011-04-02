@@ -2,12 +2,39 @@
 \section{Aula 3}
 
 \subsection{Divisão de aquivos}
-\begin{frame}{Divisão de arquivos}
+\begin{frame}[allowframebreaks,fragile]{Divisão de arquivos}
 
     \begin{itemize}
     \item Em projetos com grande quantidade de texto pode ser interessante separar o documento em diferentes arquivos para melhor organização através do comando:    
     \item[] \alert{\textbackslash include\{\textit{nomedoarquivo}\}}
     \item É utilizado no corpo do documento para incluir o conteúdo de outro arquivo. Quando utilizado, o \LaTeX\ começará uma nova página antes de processar o arquivo.
+    \end{itemize}
+
+    \begin{exampleblock}{Exemplo}
+    {\footnotesize
+\begin{verbatim}
+  \documentclass{report}
+  
+  \usepackage[brazil]{babel}
+  \usepackage[utf8]{inputenc}
+  
+  \begin{document}
+  \include{capa}
+  \tableofcontents
+  \include{cap1}
+  \include{cap2}
+  \include{cap3}
+  \appendix
+  \include{appA}
+  \include{appB}
+  \end{document}
+\end{verbatim}
+    }
+    \end{exampleblock}
+
+    \newpage
+
+    \begin{itemize}
     \item Para incluir outro arquivo sem começar uma nova página utiliza-se o comando
     \item[] \alert{\textbackslash input\{\textit{nomedoarquivo}\}}
     \item Caso o arquivo esteja em uma pasta diferente da do arquivo principal, deve ser especificado o caminho completo do arquivo que será incluído.
@@ -19,7 +46,7 @@
 \begin{frame}{Utilização de Classes e Modelos}
 
   \begin{itemize}
-    \item \textit{Modelos} em \LaTeX\ são arquivos pré-definidos que visam automatizar a formatação do texto de acordo com determinada norma, sendo necessário apenas substituir o texto d0 exemplo pelo seu. Ex:
+    \item \textit{Modelos} em \LaTeX\ são arquivos pré-definidos que visam automatizar a formatação do texto de acordo com determinada norma, sendo necessário apenas substituir o texto do exemplo pelo seu. Ex:
     \begin{itemize}
     \item UTFPR - Prof. Hugo Vieira
     \item SBC
@@ -99,7 +126,7 @@
     \item Todo o texto após o \textit{bibitem} será transcrito no arquivo final sem qualquer modificação.
   \end{itemize}
 
-  \begin{example}
+  \begin{exampleblock}{Exemplo}
   \begin{semiverbatim}
     \\begin\{thebibliography\}
     \\bibitem\{lamport94\}
@@ -112,7 +139,7 @@
 
     \\end\{thebibliography\}
   \end{semiverbatim}
-  \end{example}
+  \end{exampleblock}
 
     \newpage
 
@@ -133,7 +160,7 @@
     \item Uma entrada padrão do BibTex é a seguinte:
   \end{itemize}
 
-  \begin{example}{}
+  \begin{exampleblock}{Exemplo}
     \begin{semiverbatim}
      @book\{
       ibrahim,
@@ -144,7 +171,7 @@
       year=\{2008\}
     \}
     \end{semiverbatim}
-  \end{example}
+  \end{exampleblock}
 
     \newpage
 
@@ -158,10 +185,13 @@
     
     \item Na prática, os passos para criação de uma bibliografia pelo BibTex são os seguintes:
     \begin{enumerate}
+      \item Criar o arquivo .tex;
       \item Criar o arquivo .bib;
-      \item Gerar o arquivo .aux (executando \textit{pdflatex} por exemplo);
-      \item Rodar o comando \textit{bibtex} cada vez que o arquivo .bib for modificado;
-      \item Rodar novamente o \textit{pdflatex} para criar o arquivo com as referências.
+      \item \textit{pdflatex};
+      \item \textit{bibtex};
+      \item \textit{pdflatex};
+      \item \textit{pdflatex};
+      \item goto 3;
     \end{enumerate}
 
   \end{itemize}
