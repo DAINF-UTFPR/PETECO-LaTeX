@@ -5,9 +5,10 @@
 \part{Aula 4}
 \section{Aula 4}
 
-%% Fórmulas Matemáticas %% 
-\subsection{Fórmulas Matemáticas}
-\begin{frame}[fragile]{Fórmulas Matemáticas}
+%% Modo Matemático %% 
+\subsection{Modo Matemático}
+
+\begin{frame}[fragile]{Modo Matemático}
     \begin{itemize}
     \item Caso não consiga utilizar algum simbolo é necessário utilizar o pacotes \LaTeX\ - \verb|amsmath| e \verb|amssymb|.
     \item O \LaTeX\ possui alguns ambientes específicos para inserção de símbolos matemáticos (\textit{modo matemático}). Os mais utilizados são:
@@ -19,6 +20,7 @@
     \end{itemize}
 \end{frame}
 
+% Diferenças do modo matemático %
 \begin{frame}[fragile]{Diferenças do modo matemático}
     \begin{enumerate}
     \item Espaços em branco e mudanças de linha não tem significado. Para espaçar o texto deve-se usar os comandos especiais: \verb|\, |, \verb*|\ |, \verb|\quad| e \verb|\qquad|.
@@ -28,19 +30,21 @@
     \end{enumerate}
 \end{frame}
 
-\begin{frame}[allowframebreaks,fragile]{Símbolos}
+%% Estruturas matemáticas %%
+\subsection{Estruturas matemáticas}
+
+% Estruturas matemáticas %
+\begin{frame}[allowframebreaks,fragile]{Estruturas matemáticas}
     \begin{block}{Letras gregas}
     \small{
 \begin{verbatim}
-    \begin{displaymath}
-    \alpha \ \beta \ \gamma \textrm{ ... } 
-    \Gamma \ \Delta \ \Theta \textrm{ ...}
-    \end{displaymath}
+  $\alpha \ \beta \ \gamma \textrm{ ... }$
+  $\Gamma \ \Delta \ \Theta \textrm{ ...}$
 \end{verbatim}
-    \begin{displaymath}
-    \alpha \  \beta \ \gamma \textrm{ ... }
-    \Gamma \ \Delta \ \Theta \textrm{ ...}
-    \end{displaymath}
+    \begin{center}
+    $\alpha \  \beta \ \gamma \textrm{ ... }$
+    $\Gamma \ \Delta \ \Theta \textrm{ ...}$
+    \end{center}
         }
     \end{block}
 
@@ -60,9 +64,33 @@
     \begin{tabular}{l l}
     \verb|$p/q$|                        & $p/q$ \\
     \verb|$\frac{a+b}{c+d}$|            & $\qquad \frac{a+b}{c+d}$ \\
-    \verb|\frac{x}{1+\frac{x}{1+x}}|    & $\qquad \qquad \frac{x}{1+\frac{x}{1+x}}$
+    \verb|$\frac{x}{1+\frac{x}{1+x}}$|  & $\qquad \qquad \frac{x}{1+\frac{x}{1+x}}$
     \end{tabular}
     }
+    \begin{columns}
+    \column{.5\textwidth}
+        \small{
+\begin{verbatim}
+  \begin{displaymath}
+    \frac{x}{1+\frac{x}{1+x}}
+  \end{displaymath}
+  
+  \begin{displaymath}
+    \frac{a+b}{c+d}
+  \end{displaymath}
+\end{verbatim}
+        }
+    \column{.5\textwidth}
+        \small{
+        \begin{displaymath}
+        \frac{x}{1+\frac{x}{1+x}}
+        \end{displaymath}
+  
+        \begin{displaymath}
+        \frac{a+b}{c+d}
+        \end{displaymath}
+        }
+    \end{columns}
     \end{block}
 
     \begin{block}{Funções}
@@ -71,17 +99,212 @@
     \verb|$\cos(x)$|    & $\cos(x)$  \\
     \verb|$\sin(x)$|    & $\sin(x)$ \\
     \verb|$\log x$|     & $\log x$ \\
-    \verb|$\tan(x)=| \\ \verb|\frac{sin(x)}{cos(x)}$|    & $\tan(x) = \frac{sin(x)}{cos(x)}$ \\
-    \verb|$\lim_{x \to 0} | \\ \verb|\frac{sin(x)}{x}$|  & $\lim_{x \to 0} \frac{sin(x)}{x}$
+    \verb|$\tan(x)=| \\ \verb|\frac{\sin(x)}{\cos(x)}$|    & $\tan(x) = \frac{\sin(x)}{\cos(x)}$ \\
+    \verb|$\lim_{x \to 0} | \\ \verb|\frac{\sin(x)}{x}$|  & $\lim_{x \to 0} \frac{\sin(x)}{x}$
     \end{tabular}
     }
+    \begin{columns}
+    \column{.5\textwidth}
+        \small{
+\begin{verbatim}
+  \begin{displaymath}
+    \lim_{x \to 0} \frac{\sin(x)}{x}
+  \end{displaymath}
+\end{verbatim}
+        }
+    \column{.5\textwidth}
+        \small{
+        \begin{displaymath}
+        \lim_{x \to 0} \frac{\sin(x)}{x}
+        \end{displaymath}
+        }
+    \end{columns}
+    \end{block}
+
+    \begin{block}{Raízes}
+    \small{
+    \begin{tabular}{l l}
+    \verb|$\sqrt{x}$|       &   $\sqrt{x}$ \\
+    \verb|$\sqrt[3]{x}$|    &   $\sqrt[3]{x}$ \\
+    \verb|$\sqrt{}x$|        &   $\sqrt{}x$
+    \end{tabular}
+    }
+    \begin{columns}
+    \column{.5\textwidth}
+        \small{
+\begin{verbatim}
+  \begin{displaymath}
+    \sqrt{\frac{x^2}{4xy + \pi}}
+  \end{displaymath}
+\end{verbatim}
+        }
+    \column{.5\textwidth}
+        \small{
+        \begin{displaymath}
+        \sqrt{\frac{x^2}{4xy + \pi}}
+        \end{displaymath}
+        }
+    \end{columns}
+    \end{block}
+
+    \begin{block}{Parêntesis}
+    \begin{columns}
+    \column{.5\textwidth}
+\begin{verbatim}
+  \begin{displaymath}
+    (\frac{3x}{5y})
+  \end{displaymath}
+  
+  \begin{displaymath}
+    \left(\frac{3x}{5y}\right)
+  \end{displaymath}
+\end{verbatim}
+    \column{.5\textwidth}
+        \begin{displaymath}
+        (\frac{3x}{5y})
+        \end{displaymath}
+
+        \begin{displaymath}
+        \left(\frac{3x}{5y}\right)
+        \end{displaymath}
+    \end{columns}
+    \end{block}
+
+    \begin{block}{Matrizes}
+    
+    \textbackslash usepackage\{array\}
+    
+    \begin{columns}
+    \column{.5\textwidth}
+\begin{verbatim}
+  \begin{displaymath}
+  \left[
+  \begin{array}{ c c }
+    \cos(x) & -\sin(x) \\
+    \sin(x) & \cos(x)
+  \end{array}
+  \right]
+  \end{displaymath}
+\end{verbatim}
+    \column{.5\textwidth}
+        \begin{displaymath}
+        \left[
+        \begin{array}{ c c }
+        \cos(x) & -\sin(x) \\
+        \sin(x) & \cos(x)
+        \end{array}
+        \right]
+        \end{displaymath}
+    \end{columns}
     \end{block}
 
 \end{frame}
 
-%% Matrizes %%
-\subsection{Matrizes}
-\begin{frame}{Matrizes}
+% Ajustando o tamanho das fórmulas %
+\begin{frame}[allowframebreaks,fragile]{Ajustando o tamanho das fórmulas}
+    \begin{itemize}
+    \item Existem quatro tamanhos predefinidos no modo matemático:
+        \begin{description}
+        \item[\textbackslash displaystyle] tamanho do modo display
+        \item[\textbackslash textstyle] tamanho do modo texto
+        \item[\textbackslash scriptsyle] tamanho do primeiro sub/sobrescrito
+        \item[\textbackslash scriptscriptstyle] tamanho dos subsequentes sub/sobrescritos
+        \end{description}
+    \end{itemize}
+
+    \begin{exampleblock}{Exemplo}
+\begin{verbatim}
+  $ y = 1 + \frac{x}{1+\frac{x}{1+\frac{x}{1+x}}} $
+\end{verbatim}
+
+    $ y = 1 + \frac{x}{1+\frac{x}{1+\frac{x}{1+x}}} $
+
+\begin{verbatim}
+  $ \displaystyle y = 1 +
+        \frac{x}{\displaystyle 1 + 
+        \frac{x}{\displaystyle 1 + 
+        \frac{x}{\displaystyle 1 + x}}} $
+\end{verbatim}
+
+    $ \displaystyle y = 1 + 
+        \frac{x}{\displaystyle 1 + 
+        \frac{x}{\displaystyle 1 + 
+        \frac{x}{\displaystyle 1 + x}}} $
+    \end{exampleblock}
+\end{frame}
+
+%% Equações %%
+\subsection{Equações}
+
+% Enumerando equações %
+\begin{frame}[fragile]{Enumerando equações}
+    \begin{itemize}
+    \item Com o ambiente \verb|equation| é possível enumerar uma única equação. Caso deseje referenciar essa equação é necessário inserir um \verb|label|.
+    \end{itemize}
+
+    \begin{exampleblock}{Exemplo}
+    \small{
+\begin{verbatim}
+  Como vemos na equação \ref{eq:tor}.
+  \begin{equation}
+  v^2 = v_0^2 + 2a\Delta x \label{eq:tor}
+  \end{equation}
+\end{verbatim}
+    Como vemos na equação \ref{eq:tor}.}
+    \begin{equation}
+    v^2 = v_0^2 + 2a\Delta x \label{eq:tor}
+    \end{equation}
+    \end{exampleblock}
+
+    \begin{itemize}
+    \item Se você queira deixar de enumerar uma equação é só adicionar um asterisco ao comando: \verb|equation*|
+    \end{itemize}
+\end{frame}
+
+% Equações de multiplas linhas %
+\begin{frame}[allowframebreaks,fragile]{Equações de múltiplas linhas}
+    \begin{itemize}
+    \item Há casos onde a equação é muito grande para caber em uma linha ou se tem várias equações alinhadas verticalmente.
+    Para estes casos utilizamos o ambiente \alert{eqnarray}.
+    \item Funciona como o \verb|array|, mas não é preciso definir as tabulações e suporta enumeração. (* é limitado a 3 colunas)
+    \end{itemize}
+
+    \begin{exampleblock}{Exemplo}
+\begin{verbatim}
+  \usepackage{array}
+
+  \begin{eqnarray}
+    10x^2y+15xy^2-5xy & = & 5(2x^2y+3xy^2-xy) \\
+     & = & 5x(2xy+3y^2-y) \\
+     & = & 5xy(2x+3y-1)
+  \end{eqnarray}
+\end{verbatim}
+    \begin{eqnarray}
+    10x^2y + 15xy^2 - 5xy & = & 5(2x^2y + 3xy^2 - xy) \\
+     & = & 5x(2xy + 3y^2 - y) \\
+     & = & 5xy(2x + 3y - 1)
+    \end{eqnarray}
+    \end{exampleblock}
+
+    \begin{itemize}
+    \item No exemplo acima as três linhas são enumeradas separadamente, mas não era necessário. Para isso usa-se o comando \verb|\nonumber| antes do \verb|\\|. E caso não quera nenhuma enumeração usa-se um asterisco: \verb|eqnarray*|
+    \end{itemize}
+
+    \begin{exampleblock}{Exemplo}
+\begin{verbatim}
+  \begin{eqnarray}
+    10x^2y+15xy^2-5xy & = & 5(2x^2y+3xy^2-xy)\nonumber \\
+     & = & 5x(2xy+3y^2-y) \nonumber \\
+     & = & 5xy(2x+3y-1)
+  \end{eqnarray}
+\end{verbatim}
+    \begin{eqnarray}
+    10x^2y + 15xy^2 - 5xy & = & 5(2x^2y + 3xy^2 - xy) \nonumber \\
+     & = & 5x(2xy + 3y^2 - y) \nonumber \\
+     & = & 5xy(2x + 3y - 1)
+    \end{eqnarray}
+    \end{exampleblock}
+
 
 \end{frame}
 

@@ -472,7 +472,7 @@ Texto centralizado.
         \item[\textbackslash\textbackslash] começa nova linha
         \item[\textbackslash hline] linha horizontal
         \item[\textbackslash newline] começa uma nova linha na célula
-        \item[\textbackslash cline(\textit{i-j})] linha horizontal da coluna \textit{i} até a \textit{j}
+        \item[\textbackslash cline\{\textit{i-j}\}] linha horizontal da coluna \textit{i} até a \textit{j}
         \item[\textbackslash multicolumn\{\textit{tamanho}\}\{\textit{tabulaçao}\}{...}] define uma célula com múltiplas colunas
         \end{description}
     \end{block}
@@ -508,10 +508,10 @@ Texto centralizado.
 esquerda \& centro \& direita \\\\
 \\hline
 1 \& 2 \& 3 \\\\
-\\cline{2-2}
+\\cline\{2-2\}
 4 \& 5 \& 6 \\\\
-\\cline{2-2}
-7 \& 8 \& 9 
+\\cline\{2-2\}
+7 \& 8 \& 9 \\\\
 \\hline
 \\end\{tabular\}
 \end{semiverbatim}
